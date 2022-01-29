@@ -3,7 +3,7 @@ import InputHandler from "/DevCom/src/input.js";
 import Ball from "/DevCom/src/ball.js";
 
 import { buildLevel } from "/DevCom/src/levels.js";
-import Level1, { Level2, Level3 } from "/src/levels.js";
+import Level1, { Level2, Level3 } from "/DevCom/src/levels.js";
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
