@@ -1,5 +1,5 @@
 import Game from "/DevCom/src/game.js";
-import Title from "/DevCom/src/title.js";
+import Title from "/src/title.js";
 
 let titleCanvas = document.getElementById("titleScreen");
 let tit_ctx = titleCanvas.getContext("2d");
