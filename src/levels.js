@@ -1,4 +1,4 @@
-import Brick from "/DevCom/src/brick.js";
+import Brick from "/src/brick.js";
 
 export function buildLevel(game, level) {
   let bricks = [];
