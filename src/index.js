@@ -1,4 +1,4 @@
-import Game from "/DevCom/src/game.js";
+import Game from "/src/game.js";
 import Title from "/src/title.js";
 
 let titleCanvas = document.getElementById("titleScreen");
