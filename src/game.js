@@ -1,8 +1,8 @@
-import Paddle from "/src/paddle.js";
-import InputHandler from "/src/input.js";
-import Ball from "/src/ball.js";
+import Paddle from "/DevCom/src/paddle.js";
+import InputHandler from "/DevCom/src/input.js";
+import Ball from "/DevCom/src/ball.js";
 
-import { buildLevel } from "/src/levels.js";
+import { buildLevel } from "/DevCom/src/levels.js";
 import Level1, { Level2, Level3 } from "/src/levels.js";
 
 export default class Game {
