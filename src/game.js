@@ -18,6 +18,8 @@ export default class Game {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
 
+    this.heart = document.getElementById("heart");
+
     this.gamestate = GAMESTATE.MENU;
 
     this.paddle = new Paddle(this);
@@ -119,6 +121,15 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME-OVER", this.gameWidth / 2, this.gameHeight / 2);
+    }
+
+    if (
+      this.gamestate === GAMESTATE.RUNNING ||
+      this.gamestate === GAMESTATE.NEWLEVEL
+    ) {
+      for (let i = 0; i < this.lives; i++) {
+        ctx.drawImage(this.heart, 0 + 30 * i, 0, 30, 30);
+      }
     }
   }
 
