@@ -26,7 +26,6 @@ export default class Game {
     this.gameObjects = [];
     new InputHandler(this.paddle, this);
 
-    this.level0 = new Level0(this);
     this.level1 = new Level1(this);
     this.level2 = new Level2(this);
     this.level3 = new Level3(this);
