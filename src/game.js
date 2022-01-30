@@ -32,7 +32,7 @@ export default class Game {
   }
 
   start() {
-    if (this.GAMESTATE !== GAMESTATE.MENU) return;
+    if (this.gamestate !== GAMESTATE.MENU) return;
 
 
     let bricks = buildLevel(this, this.level1.brickArrangement);
