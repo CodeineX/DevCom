@@ -6,19 +6,23 @@ export default class Ball {
     this.gameHeight = game.gameHeight;
     this.image = document.getElementById("img_ball");
 
+    this.size = 20; //diameter of ball
+
+    this.game = game;
+
+    this.reset();
+  }
+
+  reset() {
     this.position = {
       x: 0, //initial X-position of top left corner ofball
-      y: this.gameHeight - 100 //initial Y-position of top left corner of ball
+      y: this.gameHeight - 80 //initial Y-position of top left corner of ball
     };
 
     this.speed = {
       x: 2, //initial speed of ball in X-direction
       y: -3 //initial speed of ball in Y-direction
     };
-
-    this.size = 25; //diameter of ball
-
-    this.game = game;
   }
 
   draw(ctx) {
@@ -49,6 +53,8 @@ export default class Ball {
     //collision with Bottom boundary
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
+
+      this.reset();
     }
 
     //collision with Paddle
