@@ -12,8 +12,8 @@ export default class Ball {
     };
 
     this.speed = {
-      x: 0.5, //initial speed of ball in X-direction
-      y: -1 //initial speed of ball in Y-direction
+      x: 2, //initial speed of ball in X-direction
+      y: -3 //initial speed of ball in Y-direction
     };
 
     this.size = 25; //diameter of ball
