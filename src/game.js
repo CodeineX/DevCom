@@ -13,6 +13,11 @@ const GAMESTATE = {
   NEWLEVEL: 4
 };
 
+const gameTheme = new sound("/DevCom/assets/music/Theme.mp3");
+const gameOver = new sound("/DevCom/assets/music/gameOver.mp3");
+const levelUp = new sound("/DevCom/assets/music/LevelUp.mp3");
+const lossOfLife = new sound("/DevCom/assets/music/Theme.mp3");
+
 export default class Game {
   constructor(gameWidth, gameHeight) {
     this.gameWidth = gameWidth;
@@ -40,6 +45,8 @@ export default class Game {
   }
 
   start() {
+    gameTheme.play();
+
     if (
       this.gamestate !== GAMESTATE.MENU &&
       this.gamestate !== GAMESTATE.NEWLEVEL
@@ -61,6 +68,8 @@ export default class Game {
   update(deltaTime) {
     if (this.lives === 0) {
       this.gamestate = GAMESTATE.GAMEOVER;
+      gameTheme.stop();
+      gameOver.play();
     }
 
     if (
@@ -140,4 +149,19 @@ export default class Game {
       this.gamestate = GAMESTATE.PAUSED;
     }
   }
+}
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
+  this.stop = function () {
+    this.sound.pause();
+  };
 }
