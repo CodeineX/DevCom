@@ -48,9 +48,7 @@ export default class Ball {
 
     //collision with Bottom boundary
     if (this.position.y + this.size > this.gameHeight) {
-      // this.speed.x = 0;
-      // this.speed.y = 0;
-      this.speed.y = -this.speed.y;
+      this.game.lives--;
     }
 
     //collision with Paddle
