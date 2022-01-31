@@ -10,13 +10,14 @@ const GAMESTATE = {
   RUNNING: 1,
   MENU: 2,
   GAMEOVER: 3,
-  NEWLEVEL: 4
+  NEWLEVEL: 4,
+  GAMECOMPLETE: 5
 };
 
 const gameTheme = new sound("/DevCom/assets/music/Theme.mp3");
 const gameOver = new sound("/DevCom/assets/music/gameOver.mp3");
 const levelUp = new sound("/DevCom/assets/music/LevelUp.mp3");
-const lossOfLife = new sound("/DevCom/assets/music/Theme.mp3");
+const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -42,9 +43,11 @@ export default class Game {
 
     this.levels = [this.level1, this.level2, this.level3];
     this.currentLevel = 0;
+    this.maxLevel = this.levels.length - 1;
   }
 
   start() {
+    this.lives = 3;
     gameTheme.play();
 
     if (
@@ -67,22 +70,16 @@ export default class Game {
 
   update(deltaTime) {
     if (this.lives === 0) {
-      this.gamestate = GAMESTATE.GAMEOVER;
       gameTheme.stop();
       gameOver.play();
+      this.gamestate = GAMESTATE.GAMEOVER;
+      return;
     }
 
-    if (
-      this.gamestate === GAMESTATE.PAUSED ||
-      this.gamestate === GAMESTATE.MENU ||
-      this.gamestate === GAMESTATE.GAMEOVER
-    )
-      return;
+    if (this.gamestate !== GAMESTATE.RUNNING) return;
 
-    if (this.bricks.length === 0) {
-      this.currentLevel++;
-      this.gamestate = GAMESTATE.NEWLEVEL;
-      this.start();
+    if (this.bricks.length === 0 && this.currentLevel < this.maxLevel) {
+      this.nextLevel();
     }
 
     [...this.gameObjects, ...this.bricks].forEach((object) =>
@@ -104,6 +101,21 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("PAUSED", this.gameWidth / 2, this.gameHeight / 2);
+    }
+
+    if (this.gamestate === GAMESTATE.NEWLEVEL) {
+      ctx.rect(0, 0, this.gameWidth, this.gameHeight);
+      ctx.fillStyle = "rgba(0, 0, 0, 1)";
+      ctx.fill();
+
+      ctx.font = "30px AgencyFB";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText(
+        "Level Up. Press SPACEBAR To Go To Next Level.",
+        this.gameWidth / 2,
+        this.gameHeight / 2
+      );
     }
 
     if (this.gamestate === GAMESTATE.MENU) {
@@ -140,6 +152,13 @@ export default class Game {
         ctx.drawImage(this.heart, 0 + 30 * i, 0, 30, 30);
       }
     }
+  }
+
+  nextLevel() {
+    this.currentLevel++;
+    gameTheme.stop();
+    levelUp.play();
+    this.gamestate = GAMESTATE.NEWLEVEL;
   }
 
   togglePause() {
