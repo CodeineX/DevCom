@@ -116,7 +116,7 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText(
-        "Score = "this.score,
+        "Score = ",
         this.gameWidth / 2,
         this.gameHeight / 2
       );
