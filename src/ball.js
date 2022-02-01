@@ -1,6 +1,6 @@
 import { detectCollision } from "/DevCom/src/collisionDetection.js";
 
-const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
+const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3"); //to be played when ball hits floor
 
 export default class Ball {
   constructor(game) {
@@ -23,22 +23,16 @@ export default class Ball {
 
     if(this.game.currentLevel === 0){
       this.speed = {
-        x: 1,
-        y: -1.25
+        x: 1.25, //initial speed in x direction for level 1
+        y: -1.75 //initial speed in y direction for level 1
       }
     }
 
-    if(this.game.currentLevel === 1){
+    if(this.game.currentLevel === 1 ||
+      this.game.currentLevel === 2){
       this.speed = {
-        x: 2,
-        y: -3
-      }
-    }
-
-    if(this.game.currentLevel === 2){
-      this.speed = {
-        x: 2,
-        y: -3
+        x: 2, //initial speed in x direction for level 2 and 3
+        y: -3 //initial speed in y direction for level 2 and 3
       }
     }
   }
@@ -68,7 +62,7 @@ export default class Ball {
       this.speed.y = -this.speed.y;
     }
 
-    //collision with Bottom boundary
+    //collision with Bottom boundary resulting in loss of life
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
       lossOfLife.play();
@@ -82,7 +76,7 @@ export default class Ball {
     }
   }
 }
-
+//implementing sound
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;

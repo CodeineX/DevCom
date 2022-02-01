@@ -6,6 +6,7 @@ import { buildLevel } from "/DevCom/src/levels.js";
 import Level1, { Level2, Level3 } from "/DevCom/src/levels.js";
 
 const GAMESTATE = {
+  //initialising all possible gamestates
   PAUSED: 0,
   RUNNING: 1,
   MENU: 2,
@@ -14,6 +15,7 @@ const GAMESTATE = {
   GAMECOMPLETE: 5
 };
 
+//initialising consts
 const gameTheme = new sound("/DevCom/assets/music/GameThemeFull.mp3");
 const gameOver = new sound("/DevCom/assets/music/gameOver.mp3");
 const levelUp = new sound("/DevCom/assets/music/LevelUp.mp3");
@@ -32,7 +34,7 @@ export default class Game {
 
     this.paddle = new Paddle(this);
     this.ball = new Ball(this);
-    this.lives = 3;
+    this.lives = 3; //every player gets 3 lives in each level
 
     this.gameObjects = [];
     this.bricks = [];
@@ -123,8 +125,7 @@ export default class Game {
       ctx.font = "bold 20px Agency FB";
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
-      ctx.fillText("Score = ", this.gameWidth - 50, 15 );
-      ctx.fillText(this.score, this.gameWidth -50 + 30, 15 );
+      ctx.fillText("Score = "+this.score, this.gameWidth - 50, 15 );
     }
 
     if (this.gamestate === GAMESTATE.NEWLEVEL) {
@@ -141,7 +142,6 @@ export default class Game {
         this.gameHeight / 2
       );
       ctx.fillText("Score: " + this.score, this.gameWidth / 2, this.gameHeight / 2 + 30 );
-      //ctx.fillText(this.score, this.gameWidth / 2 + 50, this.gameHeight / 2 + 30 );
     }
 
     if (this.gamestate === GAMESTATE.MENU) {
@@ -168,7 +168,8 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME-OVER", this.gameWidth / 2, this.gameHeight / 2);
-      ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      ctx.fillText("High Score: " + this.highScore, this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 60 );
 
       this.currentLevel = 0;
     }
@@ -182,7 +183,8 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Congratulations On Completing All Levels.", this.gameWidth / 2, this.gameHeight / 2);
-      ctx.fillText("Press SPACEBAR to Play Again", this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      ctx.fillText("High Score: " + this.highScore, this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      ctx.fillText("Press SPACEBAR to Play Again", this.gameWidth / 2, this.gameHeight / 2 + 60 );
 
       this.currentLevel = 0;
     }
@@ -197,7 +199,7 @@ export default class Game {
     }
   }
 
-  nextLevel() {
+  nextLevel() { //function for next level
     this.score += 5*this.lives;
     this.currentLevel++;
     gameTheme.stop();
@@ -205,7 +207,7 @@ export default class Game {
     this.gamestate = GAMESTATE.NEWLEVEL;
   }
 
-  togglePause() {
+  togglePause() { //function for pausing
     if (this.gamestate === GAMESTATE.PAUSED) {
       this.gamestate = GAMESTATE.RUNNING;
     } else {
@@ -214,6 +216,7 @@ export default class Game {
   }
 }
 
+//implementing sound
 function sound(src) {
   this.sound = document.createElement("audio");
   this.sound.src = src;

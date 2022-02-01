@@ -4,6 +4,7 @@ export default class Title {
   }
 
   draw(ctx) {
+    //drawing title
     ctx.drawImage(this.image, 0, 0);
   }
 }

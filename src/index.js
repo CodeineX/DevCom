@@ -1,10 +1,10 @@
 import Game from "/DevCom/src/game.js";
 import Title from "/DevCom/src/title.js";
 
-let titleCanvas = document.getElementById("titleScreen");
+let titleCanvas = document.getElementById("titleScreen"); //title canvas
 let tit_ctx = titleCanvas.getContext("2d");
 
-let Canvas = document.getElementById("gameScreen");
+let Canvas = document.getElementById("gameScreen"); //game screen canvas
 let ctx = Canvas.getContext("2d");
 
 const GAME_WIDTH = 800;

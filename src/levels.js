@@ -6,14 +6,14 @@ export function buildLevel(game, brickArrangement) {
 
   brickArrangement.forEach((row, rowIndex) => {
     row.forEach((brick, brickIndex) => {
-      if (brick === 1) {
+      if (brick === 1) { // 1 signifies simple brick
         let position = {
           x: 100 * brickIndex,
           y: 100 + 40 * rowIndex
         };
         bricks.push(new Brick(game, position));
       }
-      if (brick === 2) {
+      if (brick === 2) { // 2 signifies concrete brick
         let position = {
           x: 100 * brickIndex,
           y: 100 + 40 * rowIndex

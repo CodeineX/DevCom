@@ -8,11 +8,12 @@ export default class Concrete {
 
     this.game = game;
 
+    //position and dimensions of brick
     this.position = position;
     this.width = 100;
     this.height = 40;
 
-    this.hitOnce = false;
+    this.hitOnce = false; //because it takes 2 hits for a concrete brick to break
     this.markedForDeletion = false;
   }
 
@@ -32,6 +33,7 @@ export default class Concrete {
 
   draw(ctx) {
     if(this.hitOnce == false){
+        //drawing concrete brick
         ctx.drawImage(
             this.concrete,
             this.position.x,
@@ -43,6 +45,7 @@ export default class Concrete {
 
     else{
         ctx.drawImage(
+            //brawing smashed concrete brick
             this.broken,
             this.position.x,
             this.position.y,
