@@ -12,8 +12,6 @@ export default class Ball {
     this.size = 20; //diameter of ball
 
     this.game = game;
-    this.currentLevel = this.game.currentLevel;
-    console.log(this.currentLevel);
 
     this.reset();
   }
