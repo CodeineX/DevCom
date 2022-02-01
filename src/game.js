@@ -45,7 +45,9 @@ export default class Game {
     this.levels = [this.level1, this.level2, this.level3];
     this.currentLevel = 0;
     this.maxLevel = this.levels.length - 1;
-  
+
+    this.scores = [0];
+    this.highScore = Math.max(...this.scores);
   }
 
   start() {
@@ -54,8 +56,8 @@ export default class Game {
     gameTheme.play();
 
     if (
-      this.gamestate !== GAMESTATE.MENU &&
-      this.gamestate !== GAMESTATE.NEWLEVEL
+      this.gamestate === GAMESTATE.RUNNING ||
+      this.gamestate === GAMESTATE.PAUSED
     )
       return;
 
@@ -77,6 +79,7 @@ export default class Game {
       gameOver.play();
       this.lives = -1
       this.gamestate = GAMESTATE.GAMEOVER;
+      this.scores.push(this.score);
       return;
     }
 
@@ -84,6 +87,10 @@ export default class Game {
 
     if (this.bricks.length === 0 && this.currentLevel < this.maxLevel) {
       this.nextLevel();
+    }
+
+    if (this.bricks.length === 0 && this.currentLevel === this.maxLevel) {
+      this.gamestate = GAMESTATE.GAMECOMPLETE;
     }
 
     [...this.gameObjects, ...this.bricks].forEach((object) =>
@@ -112,6 +119,7 @@ export default class Game {
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
       ctx.fillText("Score = ", this.gameWidth - 50, 15 );
+      ctx.fillText(this.score, this.gameWidth -50 + 20, 15 );
     }
 
     if (this.gamestate === GAMESTATE.NEWLEVEL) {
@@ -127,6 +135,8 @@ export default class Game {
         this.gameWidth / 2,
         this.gameHeight / 2
       );
+      ctx.fillText("Score: ", this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      ctx.fillText(this.score, this.gameWidth / 2 + 20, this.gameHeight / 2 + 30 );
     }
 
     if (this.gamestate === GAMESTATE.MENU) {
