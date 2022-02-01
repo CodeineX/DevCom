@@ -3,8 +3,8 @@ import {detectCollision} from "/DevCom/src/collisionDetection.js";
 
 export default class Concrete {
   constructor(game, position) {
-    this.simple = document.getElementById("simple_brick");
     this.concrete = document.getElementById("concrete_brick");
+    this.broken = document.getElementById("broken_concrete");
 
     this.game = game;
 
@@ -42,7 +42,7 @@ export default class Concrete {
 
     else{
         ctx.drawImage(
-            this.simple,
+            this.broken,
             this.position.x,
             this.position.y,
             this.width,
