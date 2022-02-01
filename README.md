@@ -4,14 +4,14 @@ How To Play:-
     1. Objective is to break all bricks with the ball and not let the ball fall to the ground using the paddle.
     2. The paddle moves using the arrow keys (Left and Right).
     3. The game consists of 3 levels. Description of each level is:-
-        a. Level 1: 
+        + Level 1: 
             Slow ball speed,
             3 layers of brick,
-        b. Level 2:
+        + Level 2:
             Fast Bal speed,
             4 layers of bricks,
             Some bricks are made up of concrete and require to be hit twice
-        c. Level 3:
+        + Level 3:
             Same as level 2 with the addition of multiple ball and they get teleported at random locations
     4. Top left corner of Game Screen shows the number of lives left, which is initially equal to 3 and replenishes back to three when you pass the first level.
     5. Score system: 

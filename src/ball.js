@@ -53,7 +53,8 @@ export default class Ball {
     //collision with Bottom boundary
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
-
+      const lossOfLife = new this.game.sound("/DevCom/assets/music/lossOfLife.mp3");
+      lossOfLife.this.game.play();
       this.reset();
     }
 
