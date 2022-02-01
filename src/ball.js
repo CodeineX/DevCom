@@ -1,5 +1,7 @@
 import { detectCollision } from "/DevCom/src/collisionDetection.js";
 
+const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
+
 export default class Ball {
   constructor(game) {
     this.gameWidth = game.gameWidth;
@@ -53,8 +55,7 @@ export default class Ball {
     //collision with Bottom boundary
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
-      const lossOfLife = new this.game.sound("/DevCom/assets/music/lossOfLife.mp3");
-      lossOfLife.this.game.play();
+      lossOfLife.play();
       this.reset();
     }
 
@@ -64,4 +65,19 @@ export default class Ball {
       this.position.y = this.game.paddle.position.y - this.size;
     }
   }
+}
+
+function sound(src) {
+  this.sound = document.createElement("audio");
+  this.sound.src = src;
+  this.sound.setAttribute("preload", "auto");
+  this.sound.setAttribute("controls", "none");
+  this.sound.style.display = "none";
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
+  this.stop = function () {
+    this.sound.pause();
+  };
 }

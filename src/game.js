@@ -17,7 +17,6 @@ const GAMESTATE = {
 const gameTheme = new sound("/DevCom/assets/music/Theme.mp3");
 const gameOver = new sound("/DevCom/assets/music/gameOver.mp3");
 const levelUp = new sound("/DevCom/assets/music/LevelUp.mp3");
-const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
