@@ -55,7 +55,7 @@ export default class Game {
     )
       return;
 
-    this.ball.reset();
+    this.ball.reset(this.levels[this.currentLevel].speed);
 
     this.bricks = buildLevel(
       this,

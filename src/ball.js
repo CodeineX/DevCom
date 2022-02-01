@@ -12,8 +12,9 @@ export default class Ball {
     this.size = 20; //diameter of ball
 
     this.game = game;
+    this.currentLevel = this.game.currentLevel;
 
-    this.reset(this.game.levels[this.game.currentLevel].speed);
+    this.reset(this.game.levels[this.currentLevel].speed);
   }
 
   reset(speed) {
@@ -54,7 +55,7 @@ export default class Ball {
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
       lossOfLife.play();
-      this.reset(this.game.levels[this.game.currentLevel].speed);
+      this.reset(this.game.levels[this.currentLevel].speed);
     }
 
     //collision with Paddle
