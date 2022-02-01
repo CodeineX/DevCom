@@ -43,6 +43,8 @@ export default class Game {
     this.levels = [this.level1, this.level2, this.level3];
     this.currentLevel = 0;
     this.maxLevel = this.levels.length - 1;
+
+    this.speed = this.levels[this.currentLevel].speed;
   }
 
   start() {
