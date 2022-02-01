@@ -1,4 +1,5 @@
 import { detectCollision } from "/DevCom/src/collisionDetection.js";
+import Level1, {Level2, Level3} from "./levels";
 
 const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
 
@@ -12,19 +13,16 @@ export default class Ball {
 
     this.game = game;
 
-    this.reset();
+    this.reset(this.game.levels[this.game.currentLevel].speed);
   }
 
-  reset() {
+  reset(speed) {
     this.position = {
       x: 0, //initial X-position of top left corner ofball
       y: this.gameHeight - 80 //initial Y-position of top left corner of ball
     };
 
-    this.speed = {
-      x: 2, //initial speed of ball in X-direction
-      y: -3 //initial speed of ball in Y-direction
-    };
+    this.speed = speed;
   }
 
   draw(ctx) {
@@ -56,7 +54,7 @@ export default class Ball {
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
       lossOfLife.play();
-      this.reset();
+      this.reset(this.game.levels[this.game.currentLevel].speed);
     }
 
     //collision with Paddle
