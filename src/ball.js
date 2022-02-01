@@ -25,7 +25,7 @@ export default class Ball {
     };
 
     this.speed = {
-      x: 2;
+      x: 2,
       y: -2.5
     };
   }
