@@ -1,10 +1,10 @@
 import Brick from "/DevCom/src/brick.js";
 import Concrete from "/DevCom/src/concrete.js";
 
-export function buildLevel(game, level) {
+export function buildLevel(game, brickArrangement) {
   let bricks = [];
 
-  level.forEach((row, rowIndex) => {
+  brickArrangement.forEach((row, rowIndex) => {
     row.forEach((brick, brickIndex) => {
       if (brick === 1) {
         let position = {
