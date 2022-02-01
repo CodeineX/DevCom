@@ -25,6 +25,7 @@ export default class Concrete {
       } 
       else{
         this.markedForDeletion = true;
+        this.game.score += 20;
       } 
     }
   }

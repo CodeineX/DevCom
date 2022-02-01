@@ -27,6 +27,8 @@ export default class Game {
 
     this.gamestate = GAMESTATE.MENU;
 
+    this.score = 0;
+
     this.paddle = new Paddle(this);
     this.ball = new Ball(this);
     this.lives = 3;
@@ -47,7 +49,7 @@ export default class Game {
   }
 
   start() {
-    levelUp.stop();
+  
     this.lives = 3;
     gameTheme.play();
 
@@ -105,6 +107,21 @@ export default class Game {
       ctx.fillText("PAUSED", this.gameWidth / 2, this.gameHeight / 2);
     }
 
+    if (this.gamestate === GAMESTATE.RUNNING) {
+      ctx.rect(this.gameWidth - 50, 0, this.gameWidth, 20);
+      ctx.fillStyle = "rgba(0, 0, 0, 1)";
+      ctx.fill();
+
+      ctx.font = "15px AgencyFB";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText(
+        "Score = "this.score,
+        this.gameWidth / 2,
+        this.gameHeight / 2
+      );
+    }
+
     if (this.gamestate === GAMESTATE.NEWLEVEL) {
       ctx.rect(0, 0, this.gameWidth, this.gameHeight);
       ctx.fillStyle = "rgba(0, 0, 0, 1)";
@@ -157,6 +174,7 @@ export default class Game {
   }
 
   nextLevel() {
+    this.score += 5*this.lives;
     this.currentLevel++;
     gameTheme.stop();
     levelUp.play();
