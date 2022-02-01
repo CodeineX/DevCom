@@ -15,16 +15,19 @@ export default class Ball {
     this.currentLevel = this.game.currentLevel;
     console.log(this.currentLevel);
 
-    this.reset(this.game.initialSpeed);
+    this.reset();
   }
 
-  reset(speed) {
+  reset() {
     this.position = {
       x: 0, //initial X-position of top left corner ofball
       y: this.gameHeight - 80 //initial Y-position of top left corner of ball
     };
 
-    this.speed = speed;
+    this.speed = {
+      x: 2;
+      y: -2.5
+    };
   }
 
   draw(ctx) {
@@ -56,7 +59,7 @@ export default class Ball {
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
       lossOfLife.play();
-      this.reset(this.game.initialSpeed);
+      this.reset();
     }
 
     //collision with Paddle
