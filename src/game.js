@@ -108,14 +108,10 @@ export default class Game {
     }
 
     if (this.gamestate === GAMESTATE.RUNNING) {
-      // ctx.rect(this.gameWidth - 50, 0, this.gameWidth, 20);
-      // ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
-      // ctx.fill();
-
       ctx.font = "15px AgencyFB";
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
-      ctx.fillText("Score = ", this.gameWidth - 20, 15 );
+      ctx.fillText("Score = ", this.gameWidth - 50, 15 );
     }
 
     if (this.gamestate === GAMESTATE.NEWLEVEL) {
@@ -157,7 +153,9 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME-OVER", this.gameWidth / 2, this.gameHeight / 2);
-      ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 20 );
+      ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 30 );
+
+      this.currentLevel = 0;
     }
 
     if (this.gamestate === GAMESTATE.GAMECOMPLETE) {
@@ -168,7 +166,10 @@ export default class Game {
       ctx.font = "30px AgencyFB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
-      ctx.fillText("Congratulations On Completing All Levels", this.gameWidth / 2, this.gameHeight / 2);
+      ctx.fillText("Congratulations On Completing All Levels.", this.gameWidth / 2, this.gameHeight / 2);
+      ctx.fillText("Press SPACEBAR to Play Again", this.gameWidth / 2, this.gameHeight / 2 + 30 );
+
+      this.currentLevel = 0;
     }
 
     if (
