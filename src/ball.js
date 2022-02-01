@@ -13,6 +13,7 @@ export default class Ball {
 
     this.game = game;
     this.currentLevel = this.game.currentLevel;
+    console.log(this.currentLevel);
 
     this.reset(this.game.levels[this.currentLevel].speed);
   }
