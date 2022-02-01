@@ -1,5 +1,4 @@
 import { detectCollision } from "/DevCom/src/collisionDetection.js";
-import Level1, {Level2, Level3} from "/DevCom/src/levels.js";
 
 const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
 
@@ -22,8 +21,26 @@ export default class Ball {
       y: this.gameHeight - 80 //initial Y-position of top left corner of ball
     };
 
-    this.InitialSpeed = this.game.InitialSpeed;
-    this.speed = this.InitialSpeed;
+    if(this.game.currentLevel === 0){
+      this.speed = {
+        x: 1,
+        y: -1.25
+      }
+    }
+
+    if(this.game.currentLevel === 1){
+      this.speed = {
+        x: 2,
+        y: -3
+      }
+    }
+
+    if(this.game.currentLevel === 2){
+      this.speed = {
+        x: 2,
+        y: -3
+      }
+    }
   }
 
   draw(ctx) {

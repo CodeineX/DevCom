@@ -109,15 +109,15 @@ export default class Game {
       ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
       ctx.fill();
 
-      ctx.font = "30px AgencyFB";
+      ctx.font = "bold 30px Agency FB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("PAUSED", this.gameWidth / 2, this.gameHeight / 2);
     }
 
     if (this.gamestate === GAMESTATE.RUNNING) {
-      ctx.font = "15px AgencyFB";
-      ctx.fillStyle = "solid black";
+      ctx.font = "bold 15px Agency FB";
+      ctx.fillStyle = "black";
       ctx.textAlign = "center";
       ctx.fillText("Score = ", this.gameWidth - 50, 15 );
       ctx.fillText(this.score, this.gameWidth -50 + 30, 15 );
@@ -128,7 +128,7 @@ export default class Game {
       ctx.fillStyle = "rgba(0, 0, 0, 1)";
       ctx.fill();
 
-      ctx.font = "30px AgencyFB";
+      ctx.font = "bold 30px Agency FB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText(
@@ -145,7 +145,7 @@ export default class Game {
       ctx.fillStyle = "rgba(0, 0, 0, 1)";
       ctx.fill();
 
-      ctx.font = "30px AgencyFB";
+      ctx.font = "bold 30px Agency FB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText(
@@ -160,7 +160,7 @@ export default class Game {
       ctx.fillStyle = "rgb(0, 0, 0)";
       ctx.fill();
 
-      ctx.font = "30px AgencyFB";
+      ctx.font = "bold 30px Agency FB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME-OVER", this.gameWidth / 2, this.gameHeight / 2);
@@ -174,7 +174,7 @@ export default class Game {
       ctx.fillStyle = "rgb(0, 0, 0)";
       ctx.fill();
 
-      ctx.font = "30px AgencyFB";
+      ctx.font = "bold 30px Agency FB";
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Congratulations On Completing All Levels.", this.gameWidth / 2, this.gameHeight / 2);
