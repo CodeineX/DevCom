@@ -71,6 +71,7 @@ export default class Game {
     if (this.lives === 0) {
       gameTheme.stop();
       gameOver.play();
+      this.lives = -1
       this.gamestate = GAMESTATE.GAMEOVER;
       return;
     }
@@ -111,7 +112,7 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText(
-        "Level Up. Press SPACEBAR To Go To Next Level.",
+        "Level Up. Press SPACEBAR to go to Next Level.",
         this.gameWidth / 2,
         this.gameHeight / 2
       );
