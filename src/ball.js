@@ -1,5 +1,5 @@
 import { detectCollision } from "/DevCom/src/collisionDetection.js";
-import Level1, {Level2, Level3} from "./levels";
+import Level1, {Level2, Level3} from "/DevCom/src/levels.js";
 
 const lossOfLife = new sound("/DevCom/assets/music/lossOfLife.mp3");
 
