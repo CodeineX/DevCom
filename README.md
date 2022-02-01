@@ -22,4 +22,8 @@ Break all bricks with the ball and not let the ball fall to the ground using the
 2. Breaking a concrete brick awards 20 points
 3. Each remaining life awards 5 points
 
-Learned: It is not necessary to always import the module from which we want a class, object or a function. Instead we can pass the class, object, or function as the parameters of constructor of the class where we want to use it. 
+### GitHub Pages for the project
+[Team Runtime Terror](https://codeinex.github.io/DevCom/)
+
+#### What I learned: 
+It is not necessary to always import the module from which we want a class, object or a function. Instead we can pass the class, object, or function as the parameters of constructor of the class where we want to use it. 

@@ -22,10 +22,7 @@ export default class Ball {
       y: this.gameHeight - 80 //initial Y-position of top left corner of ball
     };
 
-    this.speed = {
-      x: 2,
-      y: -2.5
-    };
+    this.speed = this.game.InitialSpeed;
   }
 
   draw(ctx) {

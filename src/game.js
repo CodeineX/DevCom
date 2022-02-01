@@ -52,6 +52,7 @@ export default class Game {
 
   start() {
   
+    this.InitialSpeed = this.levels[this.currentLevel].InitialSpeed;
     this.lives = 3;
     gameTheme.play();
 
@@ -116,10 +117,10 @@ export default class Game {
 
     if (this.gamestate === GAMESTATE.RUNNING) {
       ctx.font = "15px AgencyFB";
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "solid black";
       ctx.textAlign = "center";
       ctx.fillText("Score = ", this.gameWidth - 50, 15 );
-      ctx.fillText(this.score, this.gameWidth -50 + 20, 15 );
+      ctx.fillText(this.score, this.gameWidth -50 + 30, 15 );
     }
 
     if (this.gamestate === GAMESTATE.NEWLEVEL) {
@@ -136,7 +137,7 @@ export default class Game {
         this.gameHeight / 2
       );
       ctx.fillText("Score: ", this.gameWidth / 2, this.gameHeight / 2 + 30 );
-      ctx.fillText(this.score, this.gameWidth / 2 + 20, this.gameHeight / 2 + 30 );
+      ctx.fillText(this.score, this.gameWidth / 2 + 50, this.gameHeight / 2 + 30 );
     }
 
     if (this.gamestate === GAMESTATE.MENU) {
