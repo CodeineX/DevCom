@@ -44,7 +44,8 @@ export default class Game {
     this.currentLevel = 0;
     this.maxLevel = this.levels.length - 1;
 
-    this.speed = this.levels[this.currentLevel].speed;
+    this.initialSpeed = this.levels[this.currentLevel].initialSpeed;
+  
   }
 
   start() {
@@ -57,7 +58,7 @@ export default class Game {
     )
       return;
 
-    this.ball.reset(this.levels[this.currentLevel].speed);
+    this.ball.reset(this.levels[this.currentLevel].initialSpeed);
 
     this.bricks = buildLevel(
       this,

@@ -15,7 +15,7 @@ export default class Ball {
     this.currentLevel = this.game.currentLevel;
     console.log(this.currentLevel);
 
-    this.reset(this.game.speed);
+    this.reset(this.game.initialSpeed);
   }
 
   reset(speed) {
@@ -56,7 +56,7 @@ export default class Ball {
     if (this.position.y + this.size > this.gameHeight) {
       this.game.lives--;
       lossOfLife.play();
-      this.reset(this.game.speed);
+      this.reset(this.game.initialSpeed);
     }
 
     //collision with Paddle

@@ -28,10 +28,11 @@ export function buildLevel(game, brickArrangement) {
 export default class Level1 {
   constructor(game) {
     this.game = game;
-    this.speed = {
-      x: 0.5,
-      y: -1
+    this.initialSpeed = {
+      x: 1,
+      y: -2
     };
+    this.speed = this.initialSpeed;
     this.brickArrangement = [
       [0, 1, 0, 0, 0, 0, 1, 0],
       [1, 1, 1, 0, 0, 1, 1, 1],
@@ -43,10 +44,11 @@ export default class Level1 {
 export class Level2 {
   constructor(game) {
     this.game = game;
-    this.speed = {
+    this.initialSpeed = {
       x: 2,
       y: -3
     };
+    this.speed = this.initialSpeed;
     this.brickArrangement = [
       [0, 0, 1, 1, 1, 1, 0, 0],
       [0, 2, 0, 0, 0, 0, 2, 0],
@@ -59,10 +61,11 @@ export class Level2 {
 export class Level3 {
   constructor(game) {
     this.game = game;
-    this.speed = {
+    this.initialSpeed = {
       x: 2,
       y: -3
     };
+    this.speed = this.initialSpeed;
     this.brickArrangement = [
       [1, 0, 2, 1, 1, 2, 0, 1],
       [0, 2, 0, 0, 0, 0, 2, 0],
