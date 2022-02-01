@@ -171,6 +171,7 @@ export default class Game {
       ctx.fillText("High Score: " + this.highScore, this.gameWidth / 2, this.gameHeight / 2 + 30 );
       ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 60 );
 
+      this.scores.push(this.score);
       this.currentLevel = 0;
     }
 
@@ -186,6 +187,7 @@ export default class Game {
       ctx.fillText("High Score: " + this.highScore, this.gameWidth / 2, this.gameHeight / 2 + 30 );
       ctx.fillText("Press SPACEBAR to Play Again", this.gameWidth / 2, this.gameHeight / 2 + 60 );
 
+      this.scores.push(this.score);
       this.currentLevel = 0;
     }
 
