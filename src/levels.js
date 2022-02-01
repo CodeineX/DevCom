@@ -1,4 +1,5 @@
 import Brick from "/DevCom/src/brick.js";
+import Concrete from "/DevCom/src/concrete.js";
 
 export function buildLevel(game, level) {
   let bricks = [];
@@ -12,6 +13,13 @@ export function buildLevel(game, level) {
         };
         bricks.push(new Brick(game, position));
       }
+      if (brick === 2) {
+        let position = {
+          x: 100 * brickIndex,
+          y: 100 + 40 * rowIndex
+        };
+        bricks.push(new Concrete(game, position));
+      }
     });
   });
   return bricks;
@@ -23,7 +31,7 @@ export default class Level1 {
     this.brickArrangement = [
       [0, 1, 0, 0, 0, 0, 1, 0],
       [1, 1, 1, 0, 0, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1]
+      [2, 2, 2, 2, 2, 2, 2, 2]
     ];
   }
 }
@@ -35,7 +43,7 @@ export class Level2 {
       [0, 0, 1, 1, 1, 1, 0, 0],
       [0, 1, 0, 0, 0, 0, 1, 0],
       [1, 1, 1, 1, 1, 1, 1, 1],
-      [1, 1, 1, 1, 1, 1, 1, 1]
+      [2, 1, 2, 1, 1, 2, 1, 2]
     ];
   }
 }
