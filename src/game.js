@@ -157,6 +157,7 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("GAME-OVER", this.gameWidth / 2, this.gameHeight / 2);
+      ctx.fillText("Press SPACEBAR to Restart", this.gameWidth / 2, this.gameHeight / 2 + 20 );
     }
 
     if (this.gamestate === GAMESTATE.GAMECOMPLETE) {
@@ -168,6 +169,7 @@ export default class Game {
       ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText("Congratulations On Completing All Levels", this.gameWidth / 2, this.gameHeight / 2);
+    }
 
     if (
       this.gamestate === GAMESTATE.RUNNING ||
