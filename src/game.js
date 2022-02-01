@@ -14,9 +14,10 @@ const GAMESTATE = {
   GAMECOMPLETE: 5
 };
 
-const gameTheme = new sound("/DevCom/assets/music/Theme.mp3");
+const gameTheme = new sound("/DevCom/assets/music/GameThemeFull.mp3");
 const gameOver = new sound("/DevCom/assets/music/gameOver.mp3");
 const levelUp = new sound("/DevCom/assets/music/LevelUp.mp3");
+const gameComplete = new sound("/DevCom/assets/music/Champion.mp3")
 
 export default class Game {
   constructor(gameWidth, gameHeight) {
@@ -51,7 +52,8 @@ export default class Game {
   }
 
   start() {
-  
+    levelUp.stop();
+    gameComplete.stop();
     this.InitialSpeed = this.levels[this.currentLevel].InitialSpeed;
     this.lives = 3;
     gameTheme.play();
@@ -81,6 +83,7 @@ export default class Game {
       this.lives = -1
       this.gamestate = GAMESTATE.GAMEOVER;
       this.scores.push(this.score);
+      this.score = 0;
       return;
     }
 
@@ -90,8 +93,9 @@ export default class Game {
       this.nextLevel();
     }
 
-    if (this.bricks.length === 0 && this.currentLevel === this.maxLevel) {
+    if (this.bricks.length === 0 && this.currentLevel === this.maxLevel && this.gamestate !== GAMESTATE.NEWLEVEL) {
       this.gamestate = GAMESTATE.GAMECOMPLETE;
+      gameComplete.play();
     }
 
     [...this.gameObjects, ...this.bricks].forEach((object) =>
@@ -116,7 +120,7 @@ export default class Game {
     }
 
     if (this.gamestate === GAMESTATE.RUNNING) {
-      ctx.font = "bold 15px Agency FB";
+      ctx.font = "bold 20px Agency FB";
       ctx.fillStyle = "black";
       ctx.textAlign = "center";
       ctx.fillText("Score = ", this.gameWidth - 50, 15 );
@@ -136,8 +140,8 @@ export default class Game {
         this.gameWidth / 2,
         this.gameHeight / 2
       );
-      ctx.fillText("Score: ", this.gameWidth / 2, this.gameHeight / 2 + 30 );
-      ctx.fillText(this.score, this.gameWidth / 2 + 50, this.gameHeight / 2 + 30 );
+      ctx.fillText("Score: " + this.score, this.gameWidth / 2, this.gameHeight / 2 + 30 );
+      //ctx.fillText(this.score, this.gameWidth / 2 + 50, this.gameHeight / 2 + 30 );
     }
 
     if (this.gamestate === GAMESTATE.MENU) {
